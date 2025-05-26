@@ -1,0 +1,223 @@
+/* Overall Styling */
+body {
+    background-color: #202020; /* Dark gray - placeholder */
+    /* Preferred pixel font (e.g., 'Press Start 2P'), fallback to monospace */
+    font-family: 'Courier New', monospace;
+    color: #E0E0E0; /* Light gray - placeholder */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+header {
+    background-color: #4A90E2; /* Brighter blue - placeholder */
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 2px solid #101010; /* Darker border for separation */
+}
+
+header h1 {
+    color: #FFFFFF; /* White text - placeholder */
+    margin: 0;
+    font-size: 2em; /* Larger font for header */
+}
+
+/* Main content and Aside */
+main {
+    width: 80%;
+    max-width: 800px; /* Max width for larger screens */
+    margin-top: 20px;
+}
+
+aside {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+#add-task-btn {
+    background-color: #50C878; /* Green - placeholder */
+    color: #FFFFFF; /* White text */
+    border: 2px solid #101010; /* Pixelated border - dark */
+    padding: 10px 15px;
+    font-family: inherit; /* Inherit pixel/monospace font */
+    cursor: pointer;
+    text-transform: uppercase;
+    image-rendering: pixelated; /* For sharper edges if browser supports */
+}
+
+#add-task-btn:hover {
+    background-color: #36A45F; /* Darker green on hover - placeholder */
+}
+
+#add-task-btn:active {
+    background-color: #2A8C4E; /* Even darker green on active - placeholder */
+    border-style: inset; /* Give a pressed look */
+}
+
+/* Input Fields */
+#new-task-input {
+    background-color: #303030; /* Slightly lighter than body - placeholder */
+    color: #E0E0E0; /* Light gray text */
+    border: 2px solid #101010; /* Pixelated border - dark */
+    padding: 10px;
+    font-family: inherit; /* Inherit pixel/monospace font */
+    width: calc(100% - 24px); /* Adjust width considering padding and border */
+    margin-bottom: 10px;
+    image-rendering: pixelated;
+}
+
+/* Containers */
+#xp-counter, /* character-area moved to its own rule below */
+#task-list { /* removed aside textarea */
+    background-color: #282828; /* Slightly different dark shade - placeholder */
+    border: 2px solid #505050; /* Mid-gray border - placeholder */
+    padding: 15px;
+    margin-bottom: 15px;
+    min-height: 50px; /* Minimum height for visibility */
+    image-rendering: pixelated;
+}
+
+/* Character Area Styling */
+#character-area {
+    width: 48px; /* Pixel-art friendly size */
+    height: 48px; /* Pixel-art friendly size */
+    background-color: #4A90E2; /* Blue 'body' - placeholder */
+    border: 2px solid #101010; /* Outer dark border for blocky feel */
+    border-top: 12px solid #FFDB89; /* Lighter 'head' area - placeholder skin tone */
+    margin: 20px auto; /* Center it and give some space */
+    padding: 0; /* Override generic padding */
+    image-rendering: pixelated; /* Ensure sharp edges */
+    position: relative; /* For potential future pseudo-elements (eyes) */
+    /* Simple "eyes" using pseudo-elements */
+}
+
+#character-area::before,
+#character-area::after {
+    content: '';
+    position: absolute;
+    width: 4px;  /* Eye width */
+    height: 6px; /* Eye height */
+    background-color: #101010; /* Dark eyes */
+    top: 15px; /* Position eyes within the 'head' area, adjusted for border-top */
+    image-rendering: pixelated;
+}
+
+#character-area::before {
+    left: 10px; /* Position left eye */
+}
+
+#character-area::after {
+    right: 10px; /* Position right eye */
+}
+
+#xp-counter {
+    font-weight: bold;
+    color: #FFD700; /* Gold color for XP - placeholder */
+    text-align: right;
+}
+
+#task-list {
+    list-style-type: none; /* Remove default list styling if it becomes a list */
+    padding-left: 0; /* Remove default padding if it becomes a list */
+}
+
+/* Brain Dump Textarea specific styling */
+#brain-dump-area {
+    width: calc(100% - 34px); /* Width adjusted for padding (15px*2) and border (2px*2) */
+    height: 120px; /* Slightly increased height */
+    font-family: inherit; /* Inherits from body: 'Courier New', monospace */
+    color: #E0E0E0; /* Light gray text, consistent with other inputs */
+    background-color: #303030; /* Dark background, consistent with new-task-input */
+    border: 2px solid #101010; /* Darker, sharp border, consistent with new-task-input */
+    padding: 15px; /* Internal spacing for text */
+    margin-bottom: 15px; /* Space below the textarea */
+    image-rendering: pixelated; /* Ensure crisp edges */
+    resize: vertical; /* Allow user to resize vertically */
+    box-sizing: border-box; /* Ensures padding and border are included in width/height calculation */
+}
+
+/* Comment for font */
+/* To use a pixel font, you would typically use @font-face if you have the font file:
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('path/to/PressStart2P-Regular.ttf') format('truetype');
+}
+body {
+  font-family: 'PressStart2P', 'Courier New', monospace;
+}
+Alternatively, ensure the font is installed on the system or use a web font service.
+Common pixel fonts: 'Press Start 2P', 'Silkscreen', 'Pixelated MS Sans Serif'.
+*/
+
+/* Task Item ("Quest") Styling */
+.task-item {
+    background-color: #383838; /* Slightly lighter than #task-list background */
+    border: 1px solid #606060; /* A bit more defined border */
+    padding: 10px;
+    margin-bottom: 8px; /* Space between tasks */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    list-style-position: inside; /* If using list markers */
+    word-wrap: break-word; /* Prevent long text from breaking layout */
+}
+
+.task-item:hover {
+    background-color: #484848; /* Darken on hover */
+}
+
+/* Completed Task Styling */
+.completed-task {
+    text-decoration: line-through;
+    color: #888888; /* Dim the text */
+    background-color: #2E402E; /* Muted green for completion */
+}
+
+.completed-task:hover {
+    background-color: #384838; /* Slightly lighter green on hover */
+}
+
+/* XP Counter is already styled above, ensuring it's distinct:
+#xp-counter {
+    font-weight: bold;
+    color: #FFD700; // Gold color for XP - placeholder
+    text-align: right;
+    padding: 15px; // Consistent padding
+    margin-bottom: 15px; // Consistent margin
+    background-color: #282828; // Consistent container background
+    border: 2px solid #505050; // Consistent container border
+}
+*/
+
+/* Reward Message Popup Styling */
+.reward-popup {
+    position: fixed;
+    top: 15%; /* Positioned a bit from the top */
+    left: 50%;
+    transform: translate(-50%, -20px); /* Initial position for animation (slightly up) */
+    background-color: #50C878; /* Green, similar to add button */
+    color: #FFFFFF; /* White text */
+    border: 2px solid #101010; /* Dark pixelated border */
+    padding: 15px 25px;
+    text-align: center;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    image-rendering: pixelated; /* Maintain pixelated look */
+    min-width: 300px; /* Minimum width */
+    box-shadow: 0 0 0 3px #202020, 0 0 0 5px #101010; /* Creates a double border effect */
+    font-size: 1.1em;
+}
+
+.reward-popup-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0); /* Final position */
+}
