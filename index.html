@@ -8,19 +8,151 @@
 </head>
 <body>
     <header>
-        <h1>8-Bit Quest Log</h1>
+        <div id="header-title-area">
+            <h1>8-Bit Quest Log</h1>
+        </div>
+        <div id="header-character-info">
+            <!-- Character info will be populated here, e.g. by app.js -->
+            <div id="character-area"></div> <!-- Existing character avatar -->
+            <div id="rp-counter">RP: 0</div>   <!-- Renamed from xp-counter -->
+            <!-- Placeholders for new elements like Level, RP, Streak -->
+            <div id="level-display">Level: 1</div>
+            <!-- <div id="rp-display">RP: 0</div> This was a duplicate, rp-counter is the main one -->
+            <div id="streak-display">Streak: 0</div>
+        </div>
     </header>
-    <main>
-        <div id="character-area"></div>
-        <div id="xp-counter">XP: 0</div>
-        <div id="reward-message-area" class="reward-popup"></div>
-        <div id="task-list"></div>
-        <input type="text" id="new-task-input" placeholder="Add a new quest">
-        <button id="add-task-btn">Add Quest</button>
+
+    <nav class="navigation-area">
+        <button id="nav-quests" class="nav-button active" data-view="daily-quests">
+            <span class="nav-icon icon-quests"></span> Daily Quests
+        </button>
+        <button id="nav-logbook" class="nav-button" data-view="captains-log">
+            <span class="nav-icon icon-logbook"></span> Captain's Log
+        </button>
+        <button id="nav-scroll" class="nav-button" data-view="strategy-scroll">
+            <span class="nav-icon icon-scroll"></span> Strategy Scroll
+        </button>
+    </nav>
+
+    <main id="main-content">
+        <div id="view-daily-quests" class="view-active">
+            <h2>Daily Quests</h2>
+            <div id="reward-message-area" class="reward-popup"></div> <!-- Moved inside this view -->
+            <div id="task-list"></div>
+            <input type="text" id="new-task-input" placeholder="Add a new quest">
+            <button id="add-task-btn">Add Quest</button>
+        </div>
+
+        <div id="view-captains-log" class="view-hidden">
+            <h2>Captain's Log</h2>
+
+            <!-- Morning Intentions Section -->
+            <div class="log-section intentions-section">
+                <h3>Morning Intentions</h3>
+                <textarea id="intention-1" class="log-input" placeholder="Intention 1..."></textarea>
+                <textarea id="intention-2" class="log-input" placeholder="Intention 2..."></textarea>
+                <textarea id="intention-3" class="log-input" placeholder="Intention 3..."></textarea>
+            </div>
+
+            <!-- Symptom Check-in Section -->
+            <div class="log-section symptom-checkin-section">
+                <h3>Symptom Check-in</h3>
+                <div class="symptom-group">
+                    <label for="symptom-focus">Focus Level:</label>
+                    <div class="symptom-options" id="symptom-focus">
+                        <div class="symptom-option" data-symptom="focus" data-value="1">L</div>
+                        <div class="symptom-option" data-symptom="focus" data-value="2">M</div>
+                        <div class="symptom-option" data-symptom="focus" data-value="3">H</div>
+                    </div>
+                </div>
+                <div class="symptom-group">
+                    <label for="symptom-energy">Energy Level:</label>
+                    <div class="symptom-options" id="symptom-energy">
+                        <div class="symptom-option" data-symptom="energy" data-value="1">L</div>
+                        <div class="symptom-option" data-symptom="energy" data-value="2">M</div>
+                        <div class="symptom-option" data-symptom="energy" data-value="3">H</div>
+                    </div>
+                </div>
+                <div class="symptom-group">
+                    <label for="symptom-distraction">Distraction Level:</label>
+                    <div class="symptom-options" id="symptom-distraction">
+                        <div class="symptom-option" data-symptom="distraction" data-value="1">L</div>
+                        <div class="symptom-option" data-symptom="distraction" data-value="2">M</div>
+                        <div class="symptom-option" data-symptom="distraction" data-value="3">H</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Victory Log Section -->
+            <div class="log-section victory-log-section">
+                <h3>Victory Log</h3>
+                <input type="text" id="new-victory-input" class="log-input" placeholder="Log a small win...">
+                <button id="add-victory-btn" class="log-button">Add Victory</button>
+                <ul id="victory-list">
+                    <!-- Victories will be listed here -->
+                </ul>
+            </div>
+
+            <!-- End of Day Debrief Section -->
+            <div class="log-section debrief-section">
+                <h3>End of Day Debrief</h3>
+                <label for="debrief-well">What went well today?</label>
+                <textarea id="debrief-well" class="log-input" placeholder="Reflect on your successes..."></textarea>
+                <label for="debrief-challenge">What was a challenge?</label>
+                <textarea id="debrief-challenge" class="log-input" placeholder="Identify obstacles..."></textarea>
+                <label for="debrief-better">What could make tomorrow 1% better?</label>
+                <textarea id="debrief-better" class="log-input" placeholder="One small improvement..."></textarea>
+            </div>
+        </div>
+
+        <div id="view-strategy-scroll" class="view-hidden">
+            <h2>Strategy Scroll</h2>
+            <div class="strategy-card-grid">
+                <div class="strategy-card">
+                    <h4>The 5-Minute Rule</h4>
+                    <p>If you're avoiding a task, commit to doing it for just 5 minutes. Often, starting is the hardest part!</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Body Doubling</h4>
+                    <p>Work alongside someone else, even if you're not doing the same task. Their presence can help maintain focus.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>External Reminders</h4>
+                    <p>Use alarms, sticky notes, or calendar alerts for everything. Don't rely solely on your memory.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Task Batching</h4>
+                    <p>Group similar small tasks together (e.g., answer all emails at once) to reduce context switching.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Brain Dump</h4>
+                    <p>Got a distracting thought? Write it down immediately on a dedicated list to address later. (See Brain Dump panel!)</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Time Blocking</h4>
+                    <p>Schedule specific blocks of time for important tasks in your calendar, treating them like appointments.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Pomodoro Technique</h4>
+                    <p>Work in focused 25-minute intervals, followed by a 5-minute break. Longer break after 4 Pomodoros.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Clear Workspace</h4>
+                    <p>A tidy desk reduces visual distractions. Keep only what you need for the current task in front of you.</p>
+                </div>
+                <div class="strategy-card">
+                    <h4>Noise Management</h4>
+                    <p>Use noise-cancelling headphones or white noise to minimize auditory distractions and improve concentration.</p>
+                </div>
+            </div>
+        </div>
     </main>
-    <aside>
+
+    <aside id="brain-dump-panel">
+        <h3>Brain Dump</h3>
         <textarea id="brain-dump-area" placeholder="8-Bit Brain Dump Zone..."></textarea>
     </aside>
+
     <script src="app.js"></script>
     <script src="tests.js" defer></script>
 </body>
